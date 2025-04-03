@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   GTBank
+  </title>
+  <style>
+   /* Google Font Import */
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+   
+   /* Font Awesome Import */
+   @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+   
+   /* Base Styles */
+   body {
+     font-family: 'Roboto', sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f3f4f6;
+     color: #333;
+   }
+   
+   .container {
+     width: 100%;
+     max-width: 1280px;
+     margin-left: auto;
+     margin-right: auto;
+   }
+   
+   /* Utility Classes */
+   .mx-auto { margin-left: auto; margin-right: auto; }
+   .mx-1 { margin-left: 0.25rem; margin-right: 0.25rem; }
+   .mt-2 { margin-top: 0.5rem; }
+   .mt-4 { margin-top: 1rem; }
+   .mt-6 { margin-top: 1.5rem; }
+   .mt-8 { margin-top: 2rem; }
+   .mt-12 { margin-top: 3rem; }
+   .mb-8 { margin-bottom: 2rem; }
+   .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+   .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+   .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+   .px-4 { padding-left: 1rem; padding-right: 1rem; }
+   .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+   .px-12 { padding-left: 3rem; padding-right: 3rem; }
+   
+   .flex { display: flex; }
+   .grid { display: grid; }
+   .items-center { align-items: center; }
+   .justify-between { justify-content: space-between; }
+   .justify-center { justify-content: center; }
+   .space-x-4 > * + * { margin-left: 1rem; }
+   .space-x-6 > * + * { margin-left: 1.5rem; }
+   .space-y-2 > * + * { margin-top: 0.5rem; }
+   
+   .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+   .gap-6 { gap: 1.5rem; }
+   
+   .rounded { border-radius: 0.25rem; }
+   .rounded-lg { border-radius: 0.5rem; }
+   .rounded-full { border-radius: 9999px; }
+   
+   .bg-orange-100 { background-color: #fff6ed; }
+   .bg-orange-600 { background-color: #e05206; }
+   .bg-orange-700 { background-color: #c2410c; }
+   .bg-white { background-color: #ffffff; }
+   .bg-black { background-color: #000000; }
+   .bg-gray-100 { background-color: #f3f4f6; }
+   .bg-gray-800 { background-color: #333333; }
+   .bg-opacity-40 { opacity: 0.4; }
+   
+   .text-center { text-align: center; }
+   .text-white { color: #ffffff; }
+   .text-orange-600 { color: #e05206; }
+   .text-gray-400 { color: #9ca3af; }
+   .text-gray-600 { color: #4b5563; }
+   .text-gray-700 { color: #374151; }
+   .text-gray-800 { color: #1f2937; }
+   
+   .text-lg { font-size: 1.125rem; }
+   .text-2xl { font-size: 1.5rem; }
+   .text-3xl { font-size: 1.875rem; }
+   .text-4xl { font-size: 2.25rem; }
+   
+   .font-bold { font-weight: 700; }
+   .underline { text-decoration: underline; }
+   
+   .w-full { width: 100%; }
+   .h-3 { height: 0.75rem; }
+   .h-10 { height: 2.5rem; }
+   .h-80 { height: 20rem; }
+   .h-96 { height: 24rem; }
+   
+   .absolute { position: absolute; }
+   .relative { position: relative; }
+   .top-0 { top: 0; }
+   .bottom-5 { bottom: 1.25rem; }
+   .left-0 { left: 0; }
+   .right-0 { right: 0; }
+   
+   .shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+   .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+   
+   .object-cover { object-fit: cover; }
+   .overflow-hidden { overflow: hidden; }
+   .cursor-pointer { cursor: pointer; }
+   
+   /* Hover States */
+   .hover\:text-orange-600:hover { color: #e05206; }
+   .hover\:bg-orange-700:hover { background-color: #c2410c; }
+   .hover\:bg-gray-100:hover { background-color: #f3f4f6; }
+   
+   /* Component Styles */
+   a {
+     text-decoration: none;
+     color: inherit;
+   }
+   
+   button {
+     border: none;
+     cursor: pointer;
+   }
+   
+   ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+   }
+   
+   /* Slideshow styles */
+   .slideshow-container {
+     position: relative;
+     width: 100%;
+     height: auto;
+     min-height: 400px;
+   }
+   
+   .slide {
+     display: none;
+     width: 100%;
+     height: auto;
+     position: absolute;
+     animation-name: fade;
+     animation-duration: 1.5s;
+   }
+   
+   .slide img {
+     width: 100%;
+     height: auto;
+     max-height: 500px;
+     display: block;
+   }
+   
+   .slide:first-child {
+     display: block;
+   }
+   
+   .dot {
+     transition: background-color 0.6s ease;
+     opacity: 0.8;
+   }
+   
+   .dot:hover {
+     opacity: 1;
+   }
+   
+   @keyframes fade {
+     from {opacity: 0.4}
+     to {opacity: 1}
+   }
+   
+   /* Responsive Styles */
+   @media (min-width: 768px) {
+     .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+     .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+   }
+   
+   @media (min-width: 1024px) {
+     .lg\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+     .lg\:flex-row { flex-direction: row; }
+     .lg\:w-1\/2 { width: 50%; }
+     .lg\:mt-0 { margin-top: 0; }
+   }
+   
+   .flex-col { flex-direction: column; }
+   
+   /* Custom styles to match the image */
+   header.bg-orange-600 {
+     background-color: #e05206;
+   }
+   
+   .bg-orange-100 {
+     background-color: #fff6ed;
+   }
+   
+   .text-orange-600 {
+     color: #e05206;
+   }
+   
+   nav {
+     background-color: #fff;
+   }
+   
+   nav a {
+     font-weight: 500;
+   }
+   
+   .main-logo {
+     background-color: #e05206;
+     padding: 15px;
+     border-radius: 0;
+   }
+   
+   .services-section {
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     text-align: center;
+   }
+   
+   .services-section > div {
+     flex: 1;
+     min-width: 120px;
+     margin: 15px 0;
+   }
+   
+   .services-section i {
+     display: block;
+     margin: 0 auto;
+     font-size: 2rem;
+     color: #666;
+     background-color: #f5f5f5;
+     width: 70px;
+     height: 70px;
+     line-height: 70px;
+     border-radius: 50%;
+     margin-bottom: 10px;
+   }
+   
+   .innovative-section {
+     text-align: center;
+     padding: 50px 0;
+   }
+   
+   .innovative-section h2 {
+     color: #333;
+     font-size: 2rem;
+     margin-bottom: 10px;
+   }
+   
+   footer {
+     background-color: #333;
+     color: #fff;
+   }
+   
+   .contact-info {
+     display: flex;
+     align-items: center;
+     margin: 20px 0;
+   }
+   
+   .privacy-notice {
+     background-color: #e05206;
+     padding: 15px;
+     color: white;
+     text-align: center;
+   }
+   
+   .privacy-notice button {
+     background-color: white;
+     color: #e05206;
+     padding: 8px 15px;
+     border-radius: 4px;
+     margin-top: 10px;
+   }
+   
+   .online-banking-login {
+     background-color: white;
+     color: #e05206;
+     padding: 8px 15px;
+     border-radius: 4px;
+     font-weight: 500;
+   }
+   
+   .navigation-dots {
+     display: flex;
+     justify-content: center;
+     margin-top: 20px;
+   }
+   
+   .navigation-dots .dot {
+     width: 10px;
+     height: 10px;
+     background-color: rgba(255,255,255,0.5);
+     border-radius: 50%;
+     margin: 0 5px;
+     cursor: pointer;
+   }
+   
+   .navigation-dots .dot.active {
+     background-color: #e05206;
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <!-- Important Notice -->
+  <div class="bg-orange-100 text-center py-2">
+   <p class="text-orange-600 font-bold">
+   <h2>
+    Important Notice:
+    </h2>
+   </p>
+   <p class="text-gray-700">
+   <h2>
+    Please be mindful of fake sites run by fraudulent parties posing as Guaranty Trust Bank (Limited) Ghana or its affiliates. Do not disclose your personal information and financial details to anyone online or anywhere else.
+   </h2>
+   </p>
+  </div>
+  <!-- Header -->
+  <header class="bg-orange-600 text-white">
+   <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <div class="flex items-center space-x-4">
+     <a class="text-white" href="#">
+      Locate
+     </a>
+     <a class="text-white" href="#">
+      Media
+     </a>
+     <a class="text-white" href="#">
+      Help Centre
+     </a>
+     <a class="text-white" href="#">
+      Security
+     </a>
+    </div>
+    <div class="flex items-center space-x-4">
+     <a class="online-banking-login" href="login1.html">
+      Online Banking Login
+     </a>
+     <div class="main-logo">
+      <img alt="GTCO Logo" class="h-10" src="images/logo.png" width="50"/>
+     </div>
+    </div>
+   </div>
+  </header>
+  <!-- Navigation -->
+  <nav class="bg-white shadow">
+   <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <div class="flex space-x-6">
+     <a class="text-gray-700 hover:text-orange-600" href="#">
+      Personal Banking
+     </a>
+     <a class="text-gray-700 hover:text-orange-600" href="#">
+      Business Banking
+     </a>
+     <a class="text-gray-700 hover:text-orange-600" href="#">
+      About GTBank
+     </a>
+     <a class="text-gray-700 hover:text-orange-600" href="#">
+      Financial Information
+     </a>
+    </div>
+   </div>
+  </nav>
+  <!-- Main Content -->
+  <main class="container mx-auto py-12 px-6">
+   <!-- Hero Slideshow -->
+   <div class="relative overflow-hidden rounded-lg shadow-xl mb-8">
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+     <!-- Slide 1 -->
+     <div class="slide fade">
+      <img src="images/Dormant-Account-5yrs-web-banner-2021.png" class="w-full object-contain" alt="Banking Services"/>
+      <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 flex items-center">
+      </div>
+     </div>
+     <!-- Slide 2 -->
+     <div class="slide fade">
+      <img src="images/GTEXpress-Web-banner_2023-04-20-174842_sztw.jpg" class="w-full object-contain" alt="Mobile Banking"/>
+      <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 flex items-center">
+      </div>
+     </div>
+     <!-- Slide 3 -->
+     <div class="slide fade">
+      <img src="images/Myghpay-web-banner-3 (1).jpg" class="w-full object-contain" alt="Business Banking"/>
+      <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 flex items-center">
+      </div>
+     </div>
+     <!-- Slide 4 -->
+     <div class="slide fade">
+      <img src="images/website-UK-2.jpg" class="w-full object-contain" alt="Business Banking"/>
+      <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 flex items-center">
+      </div>
+     </div>
+    </div>
+    <!-- Slideshow navigation dots -->
+    <div class="navigation-dots absolute bottom-5 left-0 right-0 flex justify-center">
+     <span class="dot active mx-1 h-3 w-3 rounded-full cursor-pointer">
+     </span>
+     <span class="dot mx-1 h-3 w-3 rounded-full cursor-pointer">
+     </span>
+     <span class="dot mx-1 h-3 w-3 rounded-full cursor-pointer">
+     </span>
+     <span class="dot mx-1 h-3 w-3 rounded-full cursor-pointer">
+     </span>
+    </div>
+   </div>
+ 
+  </main>
+  <!-- Privacy Notice -->
+  <div class="privacy-notice py-4">
+   <p>
+    We take your privacy seriously and only process your personal information to make your banking experience better. In accordance with Ghana Data Protection Act 2012 (GDPA), General Data Protection Regulation (GDPR) and other applicable regulations, continuing to use this platform indicates your consent to the processing of your personal data by Guaranty Trust Bank (Ghana) Ltd and partners as detailed in our
+    <a class="underline" href="#">
+     Privacy Policy
+    </a>
+    .
+   </p>
+   <button class="bg-white text-orange-600 px-4 py-2 mt-2 rounded">
+    Got it
+   </button>
+  </div>
+  <!-- Innovative Banking Products -->
+  <section class="innovative-section bg-gray-100 py-12">
+   <div class="container mx-auto text-center">
+    <h2 class="text-2xl font-bold text-gray-800">
+     Innovative Banking Products
+    </h2>
+    <p class="text-gray-600 mt-2">
+     Tailored to your lifestyle, designed for your personal and business needs.
+    </p>
+   </div>
+  </section>
+  <!-- Services -->
+  <section class="bg-white py-12">
+   <div class="services-section container mx-auto">
+    <div>
+     <i class="fas fa-map-marker-alt text-4xl text-gray-600">
+     </i>
+     <p class="text-gray-700 mt-2">
+      Find a Branch / ATM
+     </p>
+    </div>
+    <div>
+     <i class="fas fa-download text-4xl text-gray-600">
+     </i>
+     <p class="text-gray-700 mt-2">
+      Downloads
+     </p>
+    </div>
+    <div>
+     <i class="fas fa-mobile-alt text-4xl text-gray-600">
+     </i>
+     <p class="text-gray-700 mt-2">
+      Myghpay
+     </p>
+    </div>
+    <div>
+     <i class="fas fa-university text-4xl text-gray-600">
+     </i>
+     <p class="text-gray-700 mt-2">
+      Ways To Bank
+     </p>
+    </div>
+    <div>
+     <i class="fas fa-exchange-alt text-4xl text-gray-600">
+     </i>
+     <p class="text-gray-700 mt-2">
+      Exchange Rates
+     </p>
+    </div>
+    <div>
+     <i class="fas fa-info-circle text-4xl text-gray-600">
+     </i>
+     <p class="text-gray-700 mt-2">
+      Help Centre
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+   <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div>
+     <h3 class="font-bold">
+      Personal Banking
+     </h3>
+     <ul class="mt-4 space-y-2">
+      <li>
+       <a class="text-gray-400" href="#">
+        Savings Accounts
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Current Accounts
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Cards
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        NRG Services
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Ways To Bank
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Private Banking
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="font-bold">
+      Business Banking
+     </h3>
+     <ul class="mt-4 space-y-2">
+      <li>
+       <a class="text-gray-400" href="#">
+        GTBusiness Accounts
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Corporate Cards
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Business Services
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Commercial Banking
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Corporate Banking
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        SME Banking
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="font-bold">
+      About GTBank
+     </h3>
+     <ul class="mt-4 space-y-2">
+      <li>
+       <a class="text-gray-400" href="#">
+        Our Company
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Careers
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Corporate Social Responsibility
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Financial Information
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="font-bold">
+      Help &amp; Security
+     </h3>
+     <ul class="mt-4 space-y-2">
+      <li>
+       <a class="text-gray-400" href="#">
+        Complaints &amp; Enquiries
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Newsletter Subscription
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Security Centre
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-400" href="#">
+        Whistle Blower
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="container mx-auto mt-12 text-center">
+    <p class="text-gray-400">
+     © 2025 Guaranty Trust Bank, Ghana. All Rights Reserved.
+    </p>
+    <div class="mt-4 space-x-4">
+     <a class="text-gray-400" href="#">
+      Terms and Conditions
+     </a>
+     <a class="text-gray-400" href="#">
+      Privacy Policy
+     </a>
+     <a class="text-gray-400" href="#">
+      Sitemap
+     </a>
+    </div>
+    <div class="mt-4 space-x-4">
+     <a class="text-gray-400" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a class="text-gray-400" href="#">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a class="text-gray-400" href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
+     <a class="text-gray-400" href="#">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+     <a class="text-gray-400" href="#">
+      <i class="fab fa-youtube">
+      </i>
+     </a>
+    </div>
+   </div>
+  </footer>
+  
+  <!-- Slideshow JavaScript -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+    const dots = document.getElementsByClassName("dot");
+    
+    // Initialize the slideshow
+    function showSlides() {
+      // Hide all slides
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      
+      // Remove active class from all dots
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+        dots[i].classList.remove("bg-orange-600");
+        dots[i].classList.add("bg-white");
+      }
+      
+      // Increment slide index and reset if needed
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      
+      // Display the current slide and activate its dot
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].classList.add("active");
+      dots[slideIndex - 1].classList.remove("bg-white");
+      dots[slideIndex - 1].classList.add("bg-orange-600");
+      
+      // Change slide every 5 seconds
+      setTimeout(showSlides, 5000);
+    }
+    
+    // Add click handlers to dots
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].addEventListener("click", function() {
+        // Stop the current timeout to prevent conflicts
+        clearTimeout(window.slideTimeout);
+        
+        // Set slideIndex to the clicked dot
+        slideIndex = i;
+        
+        // Hide all slides and reset all dots
+        for (let j = 0; j < slides.length; j++) {
+          slides[j].style.display = "none";
+          dots[j].classList.remove("active");
+          dots[j].classList.remove("bg-orange-600");
+          dots[j].classList.add("bg-white");
+        }
+        
+        // Show the selected slide and activate its dot
+        slides[i].style.display = "block";
+        dots[i].classList.add("active");
+        dots[i].classList.remove("bg-white");
+        dots[i].classList.add("bg-orange-600");
+        
+        // Resume slideshow after manual selection
+        window.slideTimeout = setTimeout(showSlides, 5000);
+      });
+    }
+    
+    // Start the slideshow when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+      showSlides();
+    });
+  </script>
+ </body>
+</html>
